@@ -12,6 +12,7 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="index.css" />
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -29,11 +30,9 @@
 </head>
 
 <body>
-
     <div class="container-fluid">
-
         <div class="card">
-            <h5 class="card-header">Featured</h5>
+            <h5 class="card-header bi bi-bell">Featured</h5>
             <div class="card-body">
                 <table id="example" class="table table-striped table-bordered table-light cell-border" width="100%">
                 </table>
@@ -53,8 +52,7 @@
                 <div class="modal-body modal-detail-order-schedule">
                     <div class="card">
                         <div class="card-body">
-                            <div class="accordion" id="detailOrderScheduleAccor">
-                            </div>
+                            <div class="accordion" id="detailOrderScheduleAccor"></div>
                         </div>
                     </div>
                 </div>
@@ -70,27 +68,31 @@
                 <div class="row modal-header">
                     <h5 class="col-6 modal-title" id="noteOrderScheduleModal"></h5>
                     <h5 class="col-6 modal-title" id="statusOrderScheduleModal"></h5>
-                  </div>
-                  <div class="row modal-body">
+                </div>
+                <div class="row modal-body">
                     <div class="col-md">
                         <div class="form-floating">
-                          <textarea  type="email" class="form-control" id="customerNoteOrderSchedule"  
-                          style="resize: none;height: 200px"></textarea>
-                          <label for="customerNoteOrderSchedule">Customer Note</label>
+                            <textarea type="email" class="form-control" id="customerNoteOrderSchedule"
+                                style="resize: none; height: 150px" maxlength="200"></textarea>
+                            <label for="customerNoteOrderSchedule">Customer Note</label>
                         </div>
-                      </div>
-                      <div class="col-md">
+                    </div>
+                    <div class="col-md">
                         <div class="form-floating">
-                            <textarea  type="email" class="form-control" id="productNoteOrderSchedule"  
-                            style="resize: none;height: 200px"></textarea>
+                            <textarea type="email" class="form-control" id="productNoteOrderSchedule"
+                                style="resize: none; height: 150px" maxlength="200"></textarea>
                             <label for="productNoteOrderSchedule">Product Note</label>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="saveNoteOrderSchedule">Save changes</button>
-                  </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="closeNoteOrderSchedule" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary" id="saveNoteOrderSchedule">
+                        Save changes
+                    </button>
+                </div>
             </div>
         </div>
     </div>

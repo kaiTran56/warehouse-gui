@@ -6,5 +6,6 @@ var ACTION = {
 }
 var STATUS = {
     COMPLETE: {name: "Hoàn thành"},
-    DENY: {name: "từ chối"}
+    DENY: {name: "từ chối"},
+    WAITING: {name: "đang chờ"}
 }

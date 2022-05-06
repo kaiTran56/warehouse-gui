@@ -1,4 +1,7 @@
 const HOST_NAME = "http://localhost:8082";
-const GET_ORDER_SCHEDULES = HOST_NAME + "/api/order-schedule";
-const GET_DETAIL_ORDER_SCHEDULE = HOST_NAME + "/api/order-schedule/get/";
-const GET_LIST_DETAIL_ORDER_SCHEDULES = HOST_NAME + "/api/order-schedule/search";
+
+const URL_ORDER_SCHEDULE = HOST_NAME + "/api/order-schedule";
+const GET_ORDER_SCHEDULES = URL_ORDER_SCHEDULE;
+const GET_DETAIL_ORDER_SCHEDULE = URL_ORDER_SCHEDULE +"/get/";
+const GET_LIST_DETAIL_ORDER_SCHEDULES = URL_ORDER_SCHEDULE+"/search";
+const UPDATE_ORDER_SCHEDULE = URL_ORDER_SCHEDULE +"/update";

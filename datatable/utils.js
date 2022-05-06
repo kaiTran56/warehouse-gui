@@ -20,10 +20,10 @@ let toastrConfig = () =>{
 let detailInfoComponent = (data)=>{
     return '<div class="accordion-item">'+
     '<h2 class="accordion-header" id="heading'+data.id+'">'+
-        '<button class="accordion-button" type="button" data-bs-toggle="collapse"'+
+        '<button class="accordion-button bi bi-calendar2-check" type="button" data-bs-toggle="collapse"'+
             'data-bs-target="#collapse'+data.id+'" aria-expanded="true"'+
-            'aria-controls="collapse'+data.id+'">'+
-            data.nextTimeRelease+
+            'aria-controls="collapse'+data.id+'"> '+'_'+
+            data.nextTimeRelease+'_'+data.statusOrderSchedule+
         '</button>'+
     '</h2>'+
     '<div id="collapse'+data.id+'" class="accordion-collapse collapse"'+
