@@ -26,7 +26,7 @@ let detailInfoComponent = (data)=>{
             data.nextTimeRelease+
         '</button>'+
     '</h2>'+
-    '<div id="collapse'+data.id+'" class="accordion-collapse collapse show"'+
+    '<div id="collapse'+data.id+'" class="accordion-collapse collapse"'+
         'aria-labelledby="heading'+data.id+'" data-bs-parent="#detailOrderScheduleAccor">'+
         '<div class="row accordion-body">'+
             '<div class="col-6 text-wrap">'+

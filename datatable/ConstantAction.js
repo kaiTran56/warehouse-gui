@@ -4,3 +4,7 @@ var ACTION = {
     DENY: {name: 'deny'},
     NOTE: {name: 'note'}
 }
+var STATUS = {
+    COMPLETE: {name: "Hoàn thành"},
+    DENY: {name: "từ chối"}
+}
