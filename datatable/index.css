@@ -4,13 +4,22 @@
   text-overflow: ellipsis;
   max-width: 150px;
 }
+
 th {
   background-color: rgb(16, 16, 211);
   color: rgb(60, 59, 59);
-} 
+}
+
 .modal-detail-order-schedule {
   position: relative;
   padding: 20px;
   height: 500px;
   overflow-y: scroll;
-  }
+}
+
+.modal-import-order-schedule {
+  position: relative;
+  padding: 20px;
+  height: 800px;
+  overflow-y: scroll;
+}

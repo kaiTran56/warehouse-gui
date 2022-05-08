@@ -1,4 +1,4 @@
-let dataTable = $('#example').DataTable();
+let dataTable = $('#ordScheTbl').DataTable();
 let objDetail = null;
 let query = {
     phone: "",
@@ -12,7 +12,7 @@ let updateStatusObj = {
 }
 $(document).ready(() => {
     toastrConfig();
-    dataTable = $('#example').DataTable({
+    dataTable = $('#ordScheTbl').DataTable({
         scrollY: '80vh',
         scrollCollapse: true,
         scrollX: true,
@@ -22,6 +22,7 @@ $(document).ready(() => {
             { title: "ID", data: "id", defaultContent: "-", className: "txt-truncate" },
             { title: "Name", data: "customerName", defaultContent: "-", className: " txt-truncate" },
             { title: "Phone", data: "phone", defaultContent: "-", className: "text-center txt-truncate" },
+            { title: "Order Code", data: "orderCode", defaultContent: "-", className: "text-center txt-truncate" },
             { title: "Product Code", data: "productCode", defaultContent: "-", className: " txt-truncate" },
             { title: "Product Name.", data: "productName", defaultContent: "-", className: " txt-truncate" },
             { title: "Status Order Schedule", data: "statusOrderSchedule", defaultContent: "-", className: " txt-truncate" },
@@ -31,13 +32,20 @@ $(document).ready(() => {
         ],
         columnDefs: [
             {
-                targets: [0, 1, 2, 3, 4, 5, 6, 7],
+                targets: [0, 1, 2, 3, 4, 5, 6, 8],
                 render: (data, type, row, meta) => {
                     return data ? '<td" title="' + data + '">' + data + '</td>' : '-';
                 }
             },
             {
-                targets: [8],
+                targets: [7],
+                render: (data, type, row, meta) => {
+                    time = new Date(data).toLocaleString();
+                    return data ? '<td" title="' +time + '">' + time + '</td>' : '-';
+                }
+            },
+            {
+                targets: [9],
                 data: 'id',
                 render: (data, type, row, meta) => {
                     return '<button id="detail_' + data + '" value="' + data + '" title="show"  type="button" class="btn bi bi-chat-right-dots  btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailOrderSchedule">' + '' + '</button>' +
@@ -51,11 +59,20 @@ $(document).ready(() => {
     search();
     getDetailAction();
 
+    $('#importOrScheBtn').click((e)=>{
+        getImportDataTbl();
+    });
+    $('#closeImportOrScheModal').click((e)=>{
+        $('#importFileInp').val('');
+        importDataTbl.clear();
+        importDataTbl.destroy();
+
+    });
 
 });
 
 let getDetailAction = () => {
-    $('#example').on('click', 'button', (e) => {
+    $('#ordScheTbl').on('click', 'button', (e) => {
         e.preventDefault();
         let valueBtn = e.target.value;
         let idBtn = e.target.id;
@@ -95,6 +112,7 @@ let saveChangeNote = () => {
             dataType: "json",
             success: (response) => {
                 // console.log(response);
+                search();
                 toastr["success"](SUCCESS_MSG, "SUCCESS");
             },
             error: (err) => {
@@ -102,7 +120,7 @@ let saveChangeNote = () => {
                 toastr["warning"]("ERROR", err);
             }
         });
-        search();
+ 
 
     });
 
@@ -206,7 +224,9 @@ let search = () => {
             toastr["success"](SUCCESS_MSG, "SUCCESS");
         },
         error: (err) => {
-            toastr["warning"]("ERROR", err);
+            if(err.status==0) {
+                toastr["warning"](DISCONNECTION,"ERROR");
+            }
         }
     });
 
