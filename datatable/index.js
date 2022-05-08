@@ -17,7 +17,7 @@ $(document).ready(() => {
         scrollCollapse: true,
         scrollX: true,
         responsive: true,
-        order: [[6, "desc"]],
+        order: [[8, "desc"]],
         columns: [
             { title: "ID", data: "id", defaultContent: "-", className: "txt-truncate" },
             { title: "Name", data: "customerName", defaultContent: "-", className: " txt-truncate" },
