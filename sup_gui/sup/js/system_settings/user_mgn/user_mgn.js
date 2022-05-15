@@ -57,11 +57,6 @@ $(document).ready(() => {
 
 });
 
-let saveNewUser = ()=>{
-    $('#saveNewUser').on('click', 'button', (e) => {
-        registerUser();
-    });
-}
 
 let registerUser = ()=>{
     getRoles();
@@ -85,6 +80,8 @@ let registerUser = ()=>{
             error: (err) => {
                 console.log(err);
                 toastr["warning"]("ERROR", err);
+                refuseAuthentication(err);
+                expiredToken(err);
             }
         });
     });
@@ -128,6 +125,8 @@ let saveChange = (id) => {
             error: (err) => {
                 console.log(err);
                 toastr["warning"]("ERROR", err);
+                refuseAuthentication(err);
+                expiredToken(err);
             }
         });
     });
@@ -209,6 +208,8 @@ let deleteUser = (id) => {
                 toastr["success"](SUCCESS_MSG, "SUCCESS");
             },
             error: (err) => {
+                refuseAuthentication(err);
+                expiredToken(err);
                 console.log(err);
                 if (err.status == 200) {
                     search();

@@ -16,7 +16,9 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <!-- <link rel="stylesheet" href="index.css" /> -->
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -39,7 +41,7 @@
     <script src="sup/js/common/utils.js"></script>
     <script src="sup/js/common/ConstantAction.js"></script>
     <script src="sup/js/common/Message.js"></script>
-    <script src="sup/js/system_settings/user_mgn/user_mgn.js"></script>
+    <script src="sup/js/system_settings/role_mgn/role_mgn.js"></script>
 </head>
 
 <body id="page-top">
@@ -47,6 +49,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
+        <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
@@ -87,7 +90,7 @@
                         <h6 class="collapse-header">Actions:</h6>
                         <a class="collapse-item" href="user_management.html">User Management</a>
                         <a class="collapse-item" href="role_management.html">Role Management</a>
-                        
+
                     </div>
                 </div>
             </li>
@@ -163,7 +166,6 @@
             </div>
         </ul>
         <!-- End of Sidebar -->
-        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -215,7 +217,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Content Row -->
                     <div class="row">
                         <!-- Content Column -->
@@ -224,73 +225,47 @@
                             <div class="card shadow mb-4">
                                 <div class="card-body">
                                     <div class="row">
-                                        <h5 class="col-10 ">User Management</h5>
-                                        <button id="registerUserBtn" class="col-2 btn btn-info btn-sm"
-                                            data-bs-toggle="modal" data-bs-target="#registerUserMdl">Register
-                                            User</button>
+                                        <h5 class="col-10 ">Role Management</h5>
+                                        <button id="registerRoleBtn" class="col-2 btn btn-info btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#registerRoleMdl">Register
+                                            Role</button>
                                     </div>
                                     <br>
-                                    <table id="userManagementTbl"
+                                    <table id="roleManagementTbl"
                                         class="table table-striped table-bordered table-light cell-border" width="100%">
                                     </table>
                                 </div>
                             </div>
-
-
                         </div>
-
-
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
-
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
+
     <!-- Modal register user information -->
-    <div class="modal fade" id="registerUserMdl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="registerRoleMdl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="height: 350px;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" style="height: 240px;">
                 <div class="row modal-header">
-                    <h5 class="col-6 modal-title ">New User</h5>
+                    <h5 class="col-6 modal-title ">New Role</h5>
                 </div>
                 <div class="modal-body">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1" style="height: fit-content;">UserName:</span>
-                        <input type="text" id="usernameReg" maxlength="50"
-                            class="form-control txt-truncate " placeholder="username">
-                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Role: </span>
-                        <select class="form-select" style="height: fit-content;" id="roleReg"
-                            aria-label="Default select example">
-                            <!-- <option value="ROLE_USER">User</option>
-                            <option value="ROLE_ADMIN">ADMIN</option> -->
-                        </select>
+                        <span class="input-group-text" id="basic-addon1" style="height: fit-content;">Role:</span>
+                        <input type="text" id="nameNewRole" maxlength="20" class="form-control txt-truncate "
+                            placeholder="role">
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Gmail: </span>
-                        <input type="email" id="gmailReg" class="form-control txt-truncate "
-                            placeholder="gmail@gmail.com" aria-label="Recipient's username"
-                            aria-describedby="basic-addon2">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" style="height: fit-content;">Password</span>
-                        <input type="password" id="passwordReg" minlength="6" maxlength="20" value="createdBy" class="form-control txt-truncate "
-                            placeholder="created by" aria-label="Username">
-                    </div>
-                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="closeImportOrScheModal" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" id="closeNewRoleScheModal" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="button" class="btn btn-primary" id="saveNewUser">
+                    <button type="button" class="btn btn-primary" id="saveNewRole">
                         Save changes
                     </button>
                 </div>
@@ -298,33 +273,19 @@
         </div>
     </div>
 
-
-
     <!-- Modal detail data information -->
-    <div class="modal fade" id="detailUserMdl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="detailRoleMdl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="height: 400px;">
+            <div class="modal-content" style="height: 350px;">
                 <div class="row modal-header">
-                    <h5 class="col-6 modal-title ">Detail User</h5>
+                    <h5 class="col-6 modal-title ">Detail Role</h5>
                 </div>
                 <div class="modal-body">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1" style="height: fit-content;">UserName:</span>
-                        <input type="text" id="usernameAcc" value="username" maxlength="50"
-                            class="form-control txt-truncate " placeholder="username">
-                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Role: </span>
-                        <select class="form-select" style="height: fit-content;" id="role"
-                            aria-label="Default select example">
-                            <!-- <option value="ROLE_USER">User</option>
-                            <option value="ROLE_ADMIN">ADMIN</option> -->
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Gmail: </span>
-                        <input type="text" id="gmail" disabled class="form-control txt-truncate "
-                            placeholder="gmail@gmail.com" aria-label="Recipient's username"
-                            aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon1" style="height: fit-content;">Role:</span>
+                        <input type="text" id="nameEditRole" value="username" maxlength="50"
+                            class="form-control txt-truncate " placeholder="role">
                     </div>
                     <div class="input-group mb-3">
                         <input type="text" id="createdBy" value="createdBy" disabled class="form-control txt-truncate "
@@ -345,7 +306,7 @@
                     <button type="button" class="btn btn-secondary" id="closeImportOrScheModal" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="button" class="btn btn-primary" id="saveUser">
+                    <button type="button" class="btn btn-primary" id="saveEditRoleBtn">
                         Save changes
                     </button>
                 </div>
@@ -353,7 +314,9 @@
         </div>
     </div>
     <!-- End of Page Wrapper -->
-
+    <!-- End of Page Wrapper -->
+    <!-- Bootstrap core JavaScript-->
+    <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <!-- Bootstrap core JavaScript-->
     <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
@@ -361,8 +324,6 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
 
 </body>
 

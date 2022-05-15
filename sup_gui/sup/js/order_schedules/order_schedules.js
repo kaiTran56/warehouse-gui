@@ -61,7 +61,7 @@ $(document).ready(() => {
     logout();
     search();
     getDetailAction();
-
+    downloadCsvFile();
     $('#importOrScheBtn').click((e)=>{
         getImportDataTbl();
     });
@@ -73,6 +73,11 @@ $(document).ready(() => {
     });
 
 });
+
+
+let downloadCsvFile = ()=>{
+$('#downloadCsvBtn').attr("href", DOWLOAD_ORDER_SCHEDULES);
+}
 
 let getDetailAction = () => {
     $('#ordScheTbl').on('click', 'button', (e) => {
