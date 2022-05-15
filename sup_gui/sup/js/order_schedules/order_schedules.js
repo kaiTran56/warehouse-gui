@@ -13,6 +13,7 @@ let updateStatusObj = {
 $(document).ready(() => {
     requestLogin();
     toastrConfig();
+    getUserInfo();
     dataTable = $('#ordScheTbl').DataTable({
         scrollY: '80vh',
         scrollCollapse: true,
@@ -57,6 +58,7 @@ $(document).ready(() => {
             },
         ]
     });
+    logout();
     search();
     getDetailAction();
 
@@ -120,6 +122,7 @@ let saveChangeNote = () => {
             error: (err) => {
                 console.log(err);
                 toastr["warning"]("ERROR", err);
+                expiredToken(err);
             }
         });
  
@@ -164,6 +167,7 @@ let showDetailInfo = (id) => {
         },
         error: (err) => {
             toastr["warning"]("ERROR", err);
+            expiredToken(err);
         }
     });
 }
@@ -187,6 +191,7 @@ let showListDetailSchedulesInfo = (query) => {
         },
         error: (err) => {
             toastr["warning"]("ERROR", err);
+            expiredToken(err);
         }
     });
 }
@@ -233,6 +238,8 @@ let search = () => {
             if(err.status==0) {
                 toastr["warning"](DISCONNECTION,"ERROR");
             }
+            refuseAuthentication(err);
+            expiredToken(err);
         }
     });
 

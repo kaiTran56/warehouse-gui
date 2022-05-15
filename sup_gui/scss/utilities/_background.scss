@@ -1,4 +1,4 @@
-// Background Gradient Utilities
+// Background Gradient Statistics
 
 @each $color, $value in $theme-colors {
   .bg-gradient-#{$color} {
@@ -8,7 +8,7 @@
   }
 }
 
-// Grayscale Background Utilities
+// Grayscale Background Statistics
 
 @each $level, $value in $grays {
   .bg-gray-#{$level} {

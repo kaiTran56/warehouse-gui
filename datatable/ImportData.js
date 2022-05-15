@@ -55,8 +55,12 @@ let saveImportOrdSche = ()=>{
                 toastr["success"](SUCCESS_MSG, "SUCCESS");
             },
             error: (err) => {
-                console.log(err);
-                toastr["warning"]("ERROR", err);
+                console.log(response);
+                search();
+                $('#importFileInp').val('');
+                importDataTbl.rows().remove().draw();
+                dataImport = null;
+                toastr["success"](SUCCESS_MSG, "SUCCESS");
             }
         });
     });

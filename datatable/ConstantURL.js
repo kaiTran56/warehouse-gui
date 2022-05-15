@@ -1,4 +1,4 @@
-const HOST_NAME = "http://localhost:8082";
+const HOST_NAME = "http://localhost:5000";
 
 const URL_ORDER_SCHEDULE = HOST_NAME + "/api/order-schedule";
 const GET_ORDER_SCHEDULES = URL_ORDER_SCHEDULE;

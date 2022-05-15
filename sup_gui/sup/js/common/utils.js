@@ -70,3 +70,98 @@ let requestLogin = ()=>{
         redirectPage(DIRECT_LOGIN);
     }
 }
+
+let removeToken = ()=>{
+    localStorage.removeItem(LocalStorageParam.TOKEN.name);
+}
+
+let logout = ()=>{
+    $('#logout').click(()=>{
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url: LOGOUT_URL,
+            data: "data",
+            headers: { Authorization: 'Bearer '+TOKEN },
+            dataType: "json",
+            success: (response) => {
+
+            },
+            error: (err) => {
+                toastr["warning"]("ERROR", err);
+            }
+        });
+        removeToken();
+        redirectPage(DIRECT_LOGIN);
+    });
+    
+}
+
+let expiredToken = (err)=>{
+    if(err.status==401) {
+        toastr["warning"](AUTHENTICATION,"ERROR");
+        removeToken();redirectPage(DIRECT_LOGIN);
+    }
+}
+
+let getUserInfo = () =>{
+
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: GET_CURR_USER,
+        data: "data",
+        headers: { Authorization: 'Bearer '+TOKEN },
+        dataType: "json",
+        success: (response) => {
+            console.log(response);
+            $('#username').text(response.name);
+            $('#emailInfo').text(response.email);
+            $('#usernameInfo').text(response.name);
+        },
+        error: (err) => {
+            toastr["warning"]("ERROR", err);
+        }
+    });
+};
+
+
+let refuseAuthentication = (err)=>{
+    if(err.status==403) {
+        toastr["warning"](AUTHENTICATION,"ERROR");
+        redirectPage(ERROR_PAGE);
+    }
+}
+
+let customToastr = (type, message, title) =>{
+    toastr[type](message,title);
+}
+
+let customSuccessToastr = (err) =>{
+    if(err.status==403) {
+        
+    }
+}
+
+let getRoles = ()=>{
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: GET_ROLES,
+        data: "data",
+        headers: { Authorization: 'Bearer '+TOKEN },
+        dataType: "json",
+        success: (response) => {
+            let temp ='';
+            response.listResult.map(p => {
+                temp = '<option value="'+p.name+'">'+p.name+'</option>' + temp;
+            });
+            $('#role').html(temp);
+            $('#roleReg').html(temp);
+            toastr["success"](SUCCESS_MSG, "SUCCESS");
+        },
+        error: (err) => {
+            toastr["warning"]("ERROR", err);
+        }
+    });
+}

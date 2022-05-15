@@ -3,6 +3,7 @@ let dataImport = null;
 
 let getImportDataTbl = () => {
     requestLogin();
+    logout();
     importDataTbl = $('#importOrScheTbl').DataTable({
         scrollY: '50vh',
         scrollX: true,
@@ -48,19 +49,22 @@ let saveImportOrdSche = ()=>{
             headers: { Authorization: 'Bearer '+TOKEN },
             dataType: "json",
             success: (response) => {
-                console.log(response);
-                search();
-                $('#importFileInp').val('');
-                importDataTbl.rows().remove().draw();
-                dataImport = null;
-                toastr["success"](SUCCESS_MSG, "SUCCESS");
+                // console.log(response);
+                resetImportTbl();
             },
             error: (err) => {
-                console.log(err);
-                toastr["warning"]("ERROR", err);
+                resetImportTbl();
+                refuseAuthentication(err);
             }
         });
     });
+}
+let resetImportTbl = ()=>{
+    search();
+    $('#importFileInp').val('');
+    importDataTbl.rows().remove().draw();
+    dataImport = null;
+    toastr["success"](SUCCESS_MSG, "SUCCESS");
 }
 
 let importData = () => {
@@ -75,17 +79,18 @@ let importData = () => {
         timeout: 600000,
         contentType: false,
         headers: { Authorization: 'Bearer '+TOKEN },
+        contentType: false,
         processData: false,
         success: (response) => {
             dataImport = response;
             importDataTbl.clear();
             importDataTbl.rows.add(response).draw();
-            console.log(response);
+            // console.log(response);
             toastr["success"](SUCCESS_MSG, "SUCCESS");
         },
         error: (err) => {
-            console.log(err);
             toastr["warning"]("ERROR", err);
+            refuseAuthentication(err);
         }
     })
 

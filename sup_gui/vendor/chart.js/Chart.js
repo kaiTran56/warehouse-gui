@@ -11459,7 +11459,7 @@ var Scale = core_element.extend({
 		return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels || [];
 	},
 
-	// These methods are ordered by lifecyle. Utilities then follow.
+	// These methods are ordered by lifecyle. Statistics then follow.
 	// Any function defined here is inherited by all scale types.
 	// Any function can be extended by the scale type
 
@@ -15267,7 +15267,7 @@ var Legend = core_element.extend({
 		me.doughnutMode = false;
 	},
 
-	// These methods are ordered by lifecycle. Utilities then follow.
+	// These methods are ordered by lifecycle. Statistics then follow.
 	// Any function defined here is inherited by all legend types.
 	// Any function can be extended by the legend type
 
@@ -15797,7 +15797,7 @@ var Title = core_element.extend({
 		me.legendHitBoxes = [];
 	},
 
-	// These methods are ordered by lifecycle. Utilities then follow.
+	// These methods are ordered by lifecycle. Statistics then follow.
 
 	beforeUpdate: noop$2,
 	update: function(maxWidth, maxHeight, margins) {

@@ -27,8 +27,8 @@ let login = ()=>{
             toastr["success"](SUCCESS_MSG, "SUCCESS");
         },
         error: (err) => {
-            console.log(err);
-            toastr["warning"]("ERROR", err);
+            customToastr("warning", LOGIN_ERR, "ERROR");
+            // toastr["warning"]("ERROR", err);
         }
     });
 }
