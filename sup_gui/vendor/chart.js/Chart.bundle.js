@@ -3534,7 +3534,7 @@ var core_animations = {
 		var animation, chart, numSteps, nextStep;
 		var i = 0;
 
-		// 1 animation per chart, so we are looping charts here
+		// 1 animation per chart, so we are looping Product Management here
 		while (i < animations.length) {
 			animation = animations[i];
 			chart = animation.chart;
@@ -3807,7 +3807,7 @@ helpers$1.extend(DatasetController.prototype, {
 		var data = dataset.data || (dataset.data = []);
 
 		// In order to correctly handle data addition/deletion animation (an thus simulate
-		// real-time charts), we need to monitor these data modifications and synchronize
+		// real-time Product Management), we need to monitor these data modifications and synchronize
 		// the internal meta data accordingly.
 		if (me._data !== data) {
 			if (me._data) {
@@ -5626,7 +5626,7 @@ var controller_doughnut = core_datasetController.extend({
 		return 0;
 	},
 
-	// gets the max border or hover width to properly scale pie charts
+	// gets the max border or hover width to properly scale pie Product Management
 	getMaxBorderWidth: function(arcs) {
 		var me = this;
 		var max = 0;
@@ -6435,7 +6435,7 @@ core_defaults._set('pie', {
 	cutoutPercentage: 0
 });
 
-// Pie charts are Doughnut chart with different defaults
+// Pie Product Management are Doughnut chart with different defaults
 var controller_pie = controller_doughnut;
 
 var valueOrDefault$7 = helpers$1.valueOrDefault;
@@ -6687,7 +6687,7 @@ core_defaults._set('global', {
 	}
 });
 
-// Scatter charts use line controllers
+// Scatter Product Management use line controllers
 var controller_scatter = controller_line;
 
 // NOTE export a map in which the key represents the controller type, not
@@ -7496,7 +7496,7 @@ function initCanvas(canvas, config) {
 	if (renderHeight === null || renderHeight === '') {
 		if (canvas.style.height === '') {
 			// If no explicit render height and style height, let's apply the aspect ratio,
-			// which one can be specified by the user but also by charts as default option
+			// which one can be specified by the user but also by Product Management as default option
 			// (i.e. options.aspectRatio). If not specified, use canvas aspect ratio of 2.
 			canvas.height = canvas.width / (config.options.aspectRatio || 2);
 		} else {
@@ -8341,7 +8341,7 @@ function splitNewlines(str) {
  */
 function createTooltipItem(element) {
 	var xScale = element._xScale;
-	var yScale = element._yScale || element._scale; // handle radar || polarArea charts
+	var yScale = element._yScale || element._scale; // handle radar || polarArea Product Management
 	var index = element._index;
 	var datasetIndex = element._datasetIndex;
 	var controller = element._chart.getDatasetMeta(datasetIndex).controller;
@@ -9239,7 +9239,7 @@ function mergeConfig(/* config objects ... */) {
 				// scale config merging is complex. Add our own function here for that
 				target[key] = mergeScaleConfig(tval, sval);
 			} else if (key === 'scale') {
-				// used in polar area & radar charts since there is only one scale
+				// used in polar area & radar Product Management since there is only one scale
 				target[key] = helpers$1.merge(tval, [core_scaleService.getScaleDefaults(sval.type), sval]);
 			} else {
 				helpers$1._merger(key, target, source, options);
@@ -10109,7 +10109,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 			listeners[type] = listener;
 		});
 
-		// Elements used to detect size change should not be injected for non responsive charts.
+		// Elements used to detect size change should not be injected for non responsive Product Management.
 		// See https://github.com/chartjs/Chart.js/issues/2210
 		if (me.options.responsive) {
 			listener = function() {
@@ -10257,7 +10257,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 /**
  * NOTE(SB) We actually don't use this container anymore but we need to keep it
  * for backward compatibility. Though, it can still be useful for plugins that
- * would need to work on multiple charts?!
+ * would need to work on multiple Product Management?!
  */
 Chart.instances = {};
 
@@ -12686,7 +12686,7 @@ var isNullOrUndef$2 = helpers$1.isNullOrUndef;
 function generateTicks(generationOptions, dataRange) {
 	var ticks = [];
 	// To get a "nice" value for the tick spacing, we will use the appropriately named
-	// "nice number" algorithm. See https://stackoverflow.com/questions/8506881/nice-label-algorithm-for-charts-with-minimum-ticks
+	// "nice number" algorithm. See https://stackoverflow.com/questions/8506881/nice-label-algorithm-for-Product Management-with-minimum-ticks
 	// for details.
 
 	var MIN_SPACING = 1e-14;

@@ -60,6 +60,7 @@ $(document).ready(() => {
     });
     logout();
     search();
+    downloadFile();
     getDetailAction();
     downloadCsvFile();
     $('#importOrScheBtn').click((e)=>{
@@ -85,7 +86,7 @@ let getDetailAction = () => {
         let valueBtn = e.target.value;
         let idBtn = e.target.id;
         removeLocalStorage();
-        if (idBtn.includes(ACTION.SHOW.name)) {
+        if (idBtn.includes(ACTION.DETAIL.name)) {
             showDetailInfo(valueBtn);
         } else if (idBtn.includes(ACTION.DONE.name)) {
 
@@ -250,18 +251,7 @@ let search = () => {
 
 }
 
-let setOrScheLocalStorage = (data) => {
-    localStorage.setItem(LocalStorageParam.ID_SCHEDULE.name, data.id);
-    // localStorage.setItem(LocalStorageParam.STATUS_ORDER_SCHEDULE.name, data.statusOrderSchedule);
-    localStorage.setItem(LocalStorageParam.CUSTOMER_NOTE.name, data.customerNote);
-    localStorage.setItem(LocalStorageParam.PRODUCT_NOTE.name, data.productNote);
-}
 
-let removeLocalStorage = () => {
-    localStorage.removeItem(LocalStorageParam.STATUS_ORDER_SCHEDULE.name);
-    localStorage.removeItem(LocalStorageParam.SCHEDULE_TEMP.name);
-    localStorage.removeItem(LocalStorageParam.ID_SCHEDULE.name);
-    localStorage.removeItem(LocalStorageParam.CUSTOMER_NOTE.name);
-    localStorage.removeItem(LocalStorageParam.PRODUCT_NOTE.name);
-}
-
+let downloadFile = ()=> {
+    $("#downloadCsvBtn").attr("href", DOWLOAD_ORDER_SCHEDULES);
+  }

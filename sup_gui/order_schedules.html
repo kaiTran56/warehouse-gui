@@ -42,6 +42,8 @@
     <script src="sup/js/common/Message.js"></script>
     <script src="sup/js/order_schedules/ImportData.js"></script>
     <script src="sup/js/order_schedules/order_schedules.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-object-assign@1.1.0/dist/object-assign-auto.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/text-encoding@0.6.4/lib/encoding.min.js"></script>
 
 </head>
 
@@ -91,7 +93,7 @@
                         <h6 class="collapse-header">Actions:</h6>
                         <a class="collapse-item" href="user_management.html">User Management</a>
                         <a class="collapse-item" href="role_management.html">Role Management</a>
-                        
+                        <a class="collapse-item" href="pod_management.html">POD Management</a>
                     </div>
                 </div>
             </li>
@@ -144,16 +146,16 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - Product Management -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="product_management.html">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span>Product Management</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="pod_management.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
@@ -226,9 +228,9 @@
 
                                     <div class="row">
                                         <h5 class="col-7 bi bi-bell">Order Schedules</h5>
-                                        <button type="file" id="downloadCsvBtn" class="col-2 btn btn-success btn-sm"
+                                        <a type="file" id="downloadCsvBtn" class="col-2 btn btn-success btn-sm"
                                             ><span
-                                                class="bi bi-arrow-up-square"> Download CSV</span></button>
+                                                class="bi bi-arrow-up-square"> Download CSV</span></a>
                                         <button type="file" id="importOrScheBtn" class="col-2 btn btn-info btn-sm"
                                             data-bs-toggle="modal" data-bs-target="#importOrScheModal"><span
                                                 class="bi bi-arrow-up-square"> Import Data</span></button>

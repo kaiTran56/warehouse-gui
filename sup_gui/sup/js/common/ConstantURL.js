@@ -11,6 +11,21 @@ const SAVE_LIST_ORDER_SCHEDULES = URL_ORDER_SCHEDULE+ "/save";
 const DOWLOAD_ORDER_SCHEDULES = URL_ORDER_SCHEDULE+ "/download";
 
 
+const URL_POD = HOST_NAME + "/api/pod";
+const GET_PODS = URL_POD+ "/list";
+const GET_POD = URL_POD + "/";
+const GET_PRODUCTS_BY_POD = URL_POD + "/products/"
+const SAVE_POD = URL_POD + "/save";
+const DELETE_POD = URL_POD+ "/delete/";
+
+
+const URL_PRODUCT = HOST_NAME + "/api/product";
+const GET_PRODUCTS = URL_PRODUCT+ "/list";
+const GET_PRODUCT = URL_PRODUCT + "/";
+const SAVE_PRODUCT = URL_PRODUCT + "/save";
+const DELETE_PRODUCT = URL_PRODUCT+ "/delete/";
+
+
 const URL_USER = HOST_NAME + "/api/user";
 const GET_USER = URL_USER + "/"
 const GET_USERS = URL_USER + "/list";

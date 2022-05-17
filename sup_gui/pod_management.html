@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="index.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -39,7 +39,7 @@
     <script src="sup/js/common/utils.js"></script>
     <script src="sup/js/common/ConstantAction.js"></script>
     <script src="sup/js/common/Message.js"></script>
-    <script src="sup/js/system_settings/user_mgn/user_mgn.js"></script>
+    <script src="sup/js/system_settings/pod_mgn/pod_mgn.js"></script>
 </head>
 
 <body id="page-top">
@@ -224,13 +224,13 @@
                             <div class="card shadow mb-4">
                                 <div class="card-body">
                                     <div class="row">
-                                        <h5 class="col-10 ">User Management</h5>
+                                        <h5 class="col-10 ">POD Management</h5>
                                         <button id="registerUserBtn" class="col-2 btn btn-info btn-sm"
-                                            data-bs-toggle="modal" data-bs-target="#registerUserMdl">Register
-                                            User</button>
+                                            data-bs-toggle="modal" data-bs-target="#registerPodMdl">Register
+                                            POD</button>
                                     </div>
                                     <br>
-                                    <table id="userManagementTbl"
+                                    <table id="podManagementTbl"
                                         class="table table-striped table-bordered table-light cell-border" width="100%">
                                     </table>
                                 </div>
@@ -253,81 +253,97 @@
         <!-- End of Content Wrapper -->
 
     </div>
-    <!-- Modal register user information -->
-    <div class="modal fade" id="registerUserMdl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <!-- Modal register POD information -->
+    <div class="modal fade" id="registerPodMdl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="height: 350px;">
+            <div class="modal-content" style="height: 300px;">
                 <div class="row modal-header">
-                    <h5 class="col-6 modal-title ">New User</h5>
+                    <h5 class="col-6 modal-title ">New POD</h5>
                 </div>
                 <div class="modal-body">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1" style="height: fit-content;">UserName:</span>
-                        <input type="text" id="usernameReg" maxlength="50"
-                            class="form-control txt-truncate " placeholder="username">
-                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Role: </span>
-                        <select class="form-select" style="height: fit-content;" id="roleReg"
-                            aria-label="Default select example">
-                            <!-- <option value="ROLE_USER">User</option>
-                            <option value="ROLE_ADMIN">ADMIN</option> -->
-                        </select>
+                        <span class="input-group-text" id="basic-addon1" style="height: fit-content;" >QR-Code:</span>
+                        <input type="text" id="qrCodeReg" maxlength="13" class="form-control txt-truncate " required
+                            placeholder="QR Code" impo>
+                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Quantity: </span>
+                        <input type="number" id="quantityReg" maxlength="13" class="form-control txt-truncate " required
+                            placeholder="quantity">
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Gmail: </span>
-                        <input type="email" id="gmailReg" class="form-control txt-truncate "
-                            placeholder="gmail@gmail.com" aria-label="Recipient's username"
-                            aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon1" style="height: fit-content;">Width:</span>
+                        <input type="number" id="widthReg" maxlength="13" class="form-control txt-truncate " required
+                            placeholder="width">
+                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Height: </span>
+                        <input type="number" id="heightReg" maxlength="13" class="form-control txt-truncate " required
+                            placeholder="height">
+                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Length: </span>
+                        <input type="number" id="lengthReg" maxlength="13" class="form-control txt-truncate " required
+                            placeholder="length">
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" style="height: fit-content;">Password</span>
-                        <input type="password" id="passwordReg" minlength="6" maxlength="20" value="createdBy" class="form-control txt-truncate "
-                            placeholder="created by" aria-label="Username">
-                    </div>
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="closeImportOrScheModal" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="button" class="btn btn-primary" id="saveNewUser">
+                    <button type="button" class="btn btn-primary" id="saveNewPod">
                         Save changes
                     </button>
                 </div>
             </div>
         </div>
     </div>
-
-
+    <!-- Modal detail data information -->
+    <div class="modal fade" id="listProductMdl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailOrderScheduleHeader"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-detail-order-schedule">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="accordion" id="detailProductPod"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal detail data information -->
-    <div class="modal fade" id="detailUserMdl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="detailPodMdl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content" style="height: 400px;">
                 <div class="row modal-header">
-                    <h5 class="col-6 modal-title ">Detail User</h5>
+                    <h5 class="col-6 modal-title ">Edit POD</h5>
                 </div>
                 <div class="modal-body">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1" style="height: fit-content;">UserName:</span>
-                        <input type="text" id="usernameAcc" value="username" maxlength="50"
-                            class="form-control txt-truncate " placeholder="username">
-                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Role: </span>
-                        <select class="form-select" style="height: fit-content;" id="role"
-                            aria-label="Default select example">
-                            <!-- <option value="ROLE_USER">User</option>
-                            <option value="ROLE_ADMIN">ADMIN</option> -->
-                        </select>
+                        <span class="input-group-text" id="basic-addon1" style="height: fit-content;">QR-Code:</span>
+                        <input type="text" id="qrCodeEdit" maxlength="13" class="form-control txt-truncate " required
+                            placeholder="QR Code">
+                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Quantity: </span>
+                        <input type="number" id="quantityEdit" maxlength="13" class="form-control txt-truncate " required
+                            placeholder="quantity">
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Gmail: </span>
-                        <input type="text" id="gmail" disabled class="form-control txt-truncate "
-                            placeholder="gmail@gmail.com" aria-label="Recipient's username"
-                            aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon1" style="height: fit-content;">Width:</span>
+                        <input type="number" id="widthEdit" maxlength="13" class="form-control txt-truncate " required
+                            placeholder="width">
+                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Height: </span>
+                        <input type="number" id="heightEdit" maxlength="13" class="form-control txt-truncate " required
+                            placeholder="height">
+                        <span class="input-group-text" id="basic-addon2" style="height: fit-content;">Length: </span>
+                        <input type="number" id="lengthEdit" maxlength="13" class="form-control txt-truncate " required
+                            placeholder="length">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" id="createdBy" value="createdBy" disabled class="form-control txt-truncate "
+                        <input type="text" id="createdBy" value="createdBy" disabled class="form-control txt-truncate " required
                             placeholder="created by" aria-label="Username">
                         <span class="input-group-text" style="height: fit-content;">@</span>
                         <input type="text" id="modifiedBy" value="modifiedBy" disabled
@@ -340,12 +356,13 @@
                         <input type="text" id="modifiedDate" disabled class="form-control txt-truncate "
                             placeholder="modified date" aria-label="Server">
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="closeImportOrScheModal" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="button" class="btn btn-primary" id="saveUser">
+                    <button type="button" class="btn btn-primary" id="saveEditPod">
                         Save changes
                     </button>
                 </div>

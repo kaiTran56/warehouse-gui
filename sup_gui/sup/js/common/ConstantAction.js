@@ -1,9 +1,10 @@
 var ACTION = {
-    SHOW: {name: 'detail'},
+    DETAIL: {name: 'detail'},
     DONE: {name: 'done'},
     DENY: {name: 'deny'},
     NOTE: {name: 'note'},
     DELETE: {name: 'delete'},
+    SHOW: {name: 'show'},
 }
 var STATUS = {
     COMPLETE: {name: "Hoàn thành"},
