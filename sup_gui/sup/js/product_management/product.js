@@ -27,7 +27,6 @@ $(document).ready(() => {
             { title: "ID", data: "id", defaultContent: "-", className: "text-center txt-truncate" },
             { title: "QR-Code", data: "qrCode", defaultContent: "-", className: " txt-truncate" },
             { title: "Name", data: "nameProduct", defaultContent: "-", className: "txt-truncate" },
-            { title: "Status", data: "status", defaultContent: "-", className: "txt-truncate" },
             { title: "Height", data: "height", defaultContent: "-", className: "text-center txt-truncate" },
             { title: "Length", data: "length", defaultContent: "-", className: "text-center txt-truncate" },
             { title: "Width", data: "width", defaultContent: "-", className: "text-center txt-truncate" },
@@ -37,7 +36,7 @@ $(document).ready(() => {
         ],
         columnDefs: [
             {
-                targets: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                targets: [0, 1, 2, 3, 4, 5, 6, 7],
                 render: (data, type, row, meta) => {
                     return data ? '<td" title="' + data + '">' + data + '</td>' : '-';
                 }
@@ -45,7 +44,7 @@ $(document).ready(() => {
             
             {
                 width: 5,
-                targets: [9],
+                targets: [8],
                 data: 'id',
                 render: (data, type, row, meta) => {
                     return '<button id="delete_' + data + '" value="' + data + '" title="delete" type="button" class="btn btn-danger btn-sm bi bi-file-earmark-excel">' + '' +
@@ -196,12 +195,13 @@ let deleteProduct = (id) => {
                 expiredToken(err);
                 console.log(err);
                 if (err.status == 200) {
-                    search();
                     toastr["success"](SUCCESS_MSG, "SUCCESS");
-                } else {
+                } else if(err.status == 400) {
+                    toastr["warning"](err.responseText, "ERROR");
+                }else {
                     toastr["warning"](err.responseText, "ERROR");
                 }
-
+                search();
             }
         });
     } else {

@@ -39,6 +39,25 @@ const GET_ROLE = URL_ROLE + "/";
 const DELETE_ROLE = URL_ROLE + "/delete/";
 
 
+const URL_USER_LOG = HOST_NAME+"/api/user-log";
+const GET_USER_LOGS = URL_USER_LOG + "/list";
+
+
+const URL_PICKING = HOST_NAME+"/api/picking";
+const GET_PICKING_ORDERS = URL_PICKING + "/list";
+const UPDATED_PICKING_ORDER = URL_PICKING + "/update";
+
+const URL_STOWING = HOST_NAME+"/api/stowing";
+const GET_STOWING_ORDERS = URL_STOWING + "/list";
+const UPDATED_STOWING_ORDER = URL_STOWING + "/update";
+
+
+const URL_STOCKTAKING = HOST_NAME+"/api/stocktaking";
+const GET_STOCKTAKING_ORDERS = URL_STOCKTAKING + "/list";
+const UPDATED_STOCKTAKING_ORDER = URL_STOCKTAKING + "/update";
+
+
+
 const AUTH_URL = HOST_NAME + "/api/auth";
 const SIGNIN_URL = AUTH_URL + "/signin";
 const SIGNUP_URL = AUTH_URL + "/signup";
@@ -46,6 +65,7 @@ const LOGOUT_URL = AUTH_URL + "/logout";
 
 // Tranfer pages
 const DIRECT_ORDER_SCHEDULE = "./order_schedules.html";
+const DASHBOARD ="./dashboard.html"
 const DIRECT_LOGIN="./login.html";
 const DIRECT_LOGOUT=DIRECT_LOGIN;
 const ERROR_PAGE = "./404.html";

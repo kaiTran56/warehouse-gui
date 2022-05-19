@@ -7,8 +7,8 @@ $(()=>{
 });
 
 let login = ()=>{
-    let gmail = $('#gmail').val();
-    let password = $('#password').val();
+    let gmail = $('#gmail').val().trim();
+    let password = $('#password').val().trim();
     let obj = {
         gmail: gmail,
         password: password
@@ -23,7 +23,7 @@ let login = ()=>{
         dataType: "json",
         success: (response) => {
             setToken(response.accessToken);
-            redirectPage(DIRECT_ORDER_SCHEDULE);
+            redirectPage(DASHBOARD);
             toastr["success"](SUCCESS_MSG, "SUCCESS");
         },
         error: (err) => {
