@@ -134,6 +134,7 @@ $(document).ready(() => {
   downloadFile();
   getDetailAction();
   downloadCsvFile();
+  deleteAll();
   $("#importOrScheBtn").click((e) => {
     getImportDataTbl();
   });
@@ -296,9 +297,9 @@ let showNoteOrderSchedule = (id, status) => {
       );
       $("#statusOrderScheduleModal").html(
         "Status: " +
-          (status === null
-            ? response.statusOrderSchedule
-            : status === ACTION.DONE.name
+        (status === null
+          ? response.statusOrderSchedule
+          : status === ACTION.DONE.name
             ? ACTION.DONE.name
             : ACTION.DENY.name)
       );
@@ -347,6 +348,35 @@ let removeLocalStorage = () => {
   localStorage.removeItem(LocalStorageParam.ID_SCHEDULE.name);
   localStorage.removeItem(LocalStorageParam.CUSTOMER_NOTE.name);
   localStorage.removeItem(LocalStorageParam.PRODUCT_NOTE.name);
+};
+
+
+let deleteAll = () => {
+  $('#deleteAllBtn').click((e) => {
+    var result = confirm(DELETE_QUESTION);
+    if (result) {
+      $.ajax({
+        type: "DELETE",
+        contentType: "application/json",
+        url: DELETE_ALL_ORDER_SCHEDULES,
+        data: "data",
+        dataType: "json",
+        headers: { Authorization: "Bearer " + TOKEN },
+        success: (response) => {
+          search();
+          toastr["success"](SUCCESS_MSG, "SUCCESS");
+        },
+        error: (err) => {
+          if (err.status == 0) {
+            toastr["warning"](DISCONNECTION, "ERROR");
+          }
+          search();
+          refuseAuthentication(err);
+          expiredToken(err);
+        },
+      });
+    }
+  })
 };
 
 let downloadFile = () => {

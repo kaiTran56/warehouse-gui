@@ -61,10 +61,10 @@ $(document).ready(() => {
 let registerUser = ()=>{
     getRoles();
     $('#saveNewUser').click((e) => {
-        saveObj.qrCode = $('#usernameReg').val();
-        saveObj.storageQuantity = $('#gmailReg').val();
-        saveObj.width = $('#passwordReg').val();
-        saveObj.length = [{name: $('#roleReg').val()}];
+        saveObj.username = $('#usernameReg').val();
+        saveObj.gmail = $('#gmailReg').val();
+        saveObj.password = $('#passwordReg').val();
+        saveObj.roles = [{name: $('#roleReg').val()}];
         console.log(saveObj);
         $.ajax({
             type: "POST",
